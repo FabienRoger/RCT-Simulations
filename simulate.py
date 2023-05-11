@@ -67,19 +67,15 @@ else:
     max_int = ceil(performances.max().item())
     max_nb_ints = 10
     if max_int - min_int > max_nb_ints:
-        ticks_labels = list(range(min_int, max_int + 1, (max_int - min_int) // max_nb_ints))
+        ticks = list(range(min_int, max_int + 1, (max_int - min_int) // max_nb_ints))
     else:
-        ticks_labels = list(range(min_int, max_int + 1))
-    # ticks_positions = [(i - performances.min().item()) / bucket_size for i in ticks_labels]
-    plt.xticks(ticks_labels, ticks_labels)
+        ticks = list(range(min_int, max_int + 1))
+    plt.xticks(ticks, ticks)
 
 # print gray line y=x between min qual & max qual
 min_qual = qualities.min().item()
 max_qual = qualities.max().item()
 
-# x_min_qual = (min_qual - performances.min().item()) / bucket_size
-# x_max_qual = (max_qual - performances.min().item()) / bucket_size
-# plt.plot([x_min_qual, x_max_qual], [min_qual, max_qual], color="gray")
 plt.plot([min_qual, max_qual], [min_qual, max_qual], color="gray")
 
 plt.show()
